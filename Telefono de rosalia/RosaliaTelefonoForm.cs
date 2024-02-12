@@ -1,26 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
+using System.Media;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Media;
-using System.Threading;
-using System.Reflection;
-using System.ComponentModel;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace Telefono_de_rosalia
 {
     public partial class RosaliaTelefonoForm : Form
     {
         private static SoundPlayer player = new SoundPlayer();
+
         public RosaliaTelefonoForm()
         {
             InitializeComponent();
 
             this.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-
 
             this.ShowInTaskbar = false;
 
@@ -48,23 +46,21 @@ namespace Telefono_de_rosalia
             if (callAnswered) Environment.Exit(0);
         }
 
-
         [DllImport("kernel32.dll")] public static extern bool Beep(int freq, int duration);
+
         private async void NumbersButton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Button clicked " + ((Button)sender).Name.ToString());
-
 
             if (callAnswered)
             {
                 Task.Run(() => Beep(1209, 200));
                 Task.Run(() => Beep(697, 200));
-
             }
         }
 
-
         private bool callAnswered = false;
+
         private void RosaliaTelefonoForm_Shown(object sender, EventArgs e)
         {
             this.Refresh();
@@ -87,7 +83,6 @@ namespace Telefono_de_rosalia
             });
 
             this.Opacity = 1;
-
 
             player.LoadCompleted += (object snd, AsyncCompletedEventArgs a) => Invoke(new MethodInvoker(async () =>
             {
@@ -121,11 +116,9 @@ namespace Telefono_de_rosalia
             });
         }
 
-
-
-
         private static Random rnd = new Random();
         private static Point originalPoint = new Point();
+
         private async Task Shake(int Time, int ShakeMult, int TimeBetwemShake)
         {
             originalPoint = this.Location;
@@ -166,17 +159,10 @@ namespace Telefono_de_rosalia
             }
         }
 
-
-
-
-
-
-
-
-
         private bool DraggingForm = false;
         private Point DragCursorPoint;
         private Point DragFormPoint;
+
         private void TelefonoPictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             DraggingForm = true;
@@ -188,6 +174,7 @@ namespace Telefono_de_rosalia
         {
             DraggingForm = false;
         }
+
         private void TelefonoPictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             if (DraggingForm)
@@ -198,28 +185,24 @@ namespace Telefono_de_rosalia
             }
         }
 
-
-
         private void RosaliaDancePictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             TelefonoPictureBox_MouseDown(sender, e);
         }
+
         private void RosaliaDancePictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             TelefonoPictureBox_MouseUp(sender, e);
         }
+
         private void RosaliaDancePictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             TelefonoPictureBox_MouseMove(sender, e);
         }
 
-
-
-
         private void RosaliaTelefonoForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
         }
-
     }
 }

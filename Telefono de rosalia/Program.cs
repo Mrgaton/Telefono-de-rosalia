@@ -8,6 +8,7 @@ using System.Windows.Forms;
 namespace Telefono_de_rosalia
 {
     using SLID = Guid;
+
     internal static class Program
     {
         public class GenuineWindowsDetector
@@ -21,9 +22,9 @@ namespace Telefono_de_rosalia
             }
 
             [DllImportAttribute("Slwga.dll", EntryPoint = "SLIsGenuineLocal", CharSet = CharSet.None, ExactSpelling = false, SetLastError = false, PreserveSig = true, CallingConvention = CallingConvention.Winapi, BestFitMapping = false, ThrowOnUnmappableChar = false)]
-
             [PreserveSigAttribute()]
-            static extern uint SLIsGenuineLocal(ref SLID slid, [In, Out] ref SL_GENUINE_STATE genuineState, IntPtr val3);
+            private static extern uint SLIsGenuineLocal(ref SLID slid, [In, Out] ref SL_GENUINE_STATE genuineState, IntPtr val3);
+
             public static void CheckWindows()
             {
                 if (!IsGenuineWindows())
@@ -33,6 +34,7 @@ namespace Telefono_de_rosalia
                     Environment.Exit(9);
                 }
             }
+
             private static bool IsGenuineWindows()
             {
                 if (Environment.OSVersion.Version.Major < 6)
@@ -51,14 +53,11 @@ namespace Telefono_de_rosalia
                     {
                         _IsGenuineWindows = (genuineState == SL_GENUINE_STATE.SL_GEN_STATE_IS_GENUINE);
                     }
-
                 }
                 catch { }
                 return _IsGenuineWindows;
             }
         }
-
-
 
         [DllImport("winmm.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
         public static extern uint waveOutGetNumDevs();
@@ -67,7 +66,7 @@ namespace Telefono_de_rosalia
         private static extern bool SetProcessDPIAware();
 
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             GenuineWindowsDetector.CheckWindows();
 
@@ -76,7 +75,6 @@ namespace Telefono_de_rosalia
                 MessageBox.Show("Error el programa fue modificado y es posible que no funcióne asi que me voy a ir", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
-
 
             double[] freqs = { 697, 770, 852, 941 };
             double[] freqs2 = { 1209, 1336, 1477 };
@@ -107,7 +105,8 @@ namespace Telefono_de_rosalia
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new RosaliaTelefonoForm());
         }
-        static Stream GenerateTone(double duration, params double[] frequencies)
+
+        private static Stream GenerateTone(double duration, params double[] frequencies)
         {
             const int sampleRate = 44100;
             const short bitsPerSample = 16;
