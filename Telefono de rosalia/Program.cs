@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Telefono_de_rosalia
@@ -44,7 +45,7 @@ namespace Telefono_de_rosalia
 
                 bool _IsGenuineWindows = false;
 
-                SLID windowsSlid = (Guid)new Guid("55c92734-d682-4d71-983e-d6ec3f16059f");
+                SLID windowsSlid = new Guid("55c92734-d682-4d71-983e-d6ec3f16059f");
                 try
                 {
                     SL_GENUINE_STATE genuineState = SL_GENUINE_STATE.SL_GEN_STATE_LAST;
@@ -55,6 +56,7 @@ namespace Telefono_de_rosalia
                     }
                 }
                 catch { }
+
                 return _IsGenuineWindows;
             }
         }
@@ -83,11 +85,13 @@ namespace Telefono_de_rosalia
             {
                 for (int e = 0; e < freqs2.Length; e++)
                 {
-                    using (var tone = GenerateTone(0.8, freqs[i], freqs2[e]))
+                    using (var tone = GenerateTone(0.25, freqs[i], freqs2[e]))
                     {
                         using (var player = new SoundPlayer(tone))
                         {
-                            player.PlaySync();
+                            player.Play();
+
+                            Thread.Sleep(800);
                         }
                     }
                 }
