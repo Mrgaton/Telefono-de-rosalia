@@ -1,9 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
-using System.Media;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Telefono_de_rosalia
@@ -22,10 +18,8 @@ namespace Telefono_de_rosalia
                 SL_GEN_STATE_LAST = 3
             }
 
-            [DllImport("Slwga.dll", EntryPoint = "SLIsGenuineLocal", CharSet = CharSet.None, ExactSpelling = false, SetLastError = false, PreserveSig = true, CallingConvention = CallingConvention.Winapi, BestFitMapping = false, ThrowOnUnmappableChar = false)]
+            [DllImport("Slwga.dll", EntryPoint = "SLIsGenuineLocal", CharSet = CharSet.None, ExactSpelling = false, SetLastError = false, PreserveSig = true, CallingConvention = CallingConvention.Winapi, BestFitMapping = false, ThrowOnUnmappableChar = false)][PreserveSig()] private static extern uint SLIsGenuineLocal(ref SLID slid, [In, Out] ref SL_GENUINE_STATE genuineState, IntPtr val3);
 
-            [PreserveSig()]
-            static extern uint SLIsGenuineLocal(ref SLID slid, [In, Out] ref SL_GENUINE_STATE genuineState, IntPtr val3);
             public static void CheckWindows()
             {
                 if (!IsGenuineWindows())
@@ -61,18 +55,12 @@ namespace Telefono_de_rosalia
             }
         }
 
-        [DllImport("winmm.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-        public static extern uint waveOutGetNumDevs();
-
-        [DllImport("user32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-        private static extern bool SetProcessDPIAware();
-
         [DllImport("winmm.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)] public static extern uint waveOutGetNumDevs();
 
         [DllImport("user32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)] private static extern bool SetProcessDPIAware();
 
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             GenuineWindowsDetector.CheckWindows();
 
@@ -82,22 +70,16 @@ namespace Telefono_de_rosalia
                 Environment.Exit(0);
             }
 
-            double[] freqs = { 697, 770, 852, 941 };
-            double[] freqs2 = { 1209, 1336, 1477 };
-
-            for (int i = 0; i < freqs.Length; i++)
+            /*for (int i = 0; i < horizontalFreq.Length; i++)
             {
-                for (int e = 0; e < freqs2.Length; e++)
+                for (int e = 0; e < verticalFreq.Length; e++)
                 {
-                    using (var tone = GenerateTone(0.25, freqs[i], freqs2[e]))
+                    using (var tone = GenerateTone(0.8, horizontalFreq[i], verticalFreq[e]))
                     {
-                        using (var player = new SoundPlayer(tone))
-                        {
                             player.PlaySync();
-                        }
                     }
                 }
-            }
+            }*/
 
             if (waveOutGetNumDevs() == 0)
             {
@@ -112,7 +94,7 @@ namespace Telefono_de_rosalia
             Application.Run(new RosaliaTelefonoForm());
         }
 
-        private static Stream GenerateTone(double duration, params double[] frequencies)
+        /*private static Stream GenerateTone(double duration, params double[] frequencies)
         {
             const int sampleRate = 44100;
             const short bitsPerSample = 16;
@@ -137,13 +119,13 @@ namespace Telefono_de_rosalia
             {
                 double t = (double)i / sampleRate;
                 var freqSamples = frequencies.Select(f => (Math.Sin(2 * Math.PI * f * t)));
-                short sample = (short)(short.MaxValue * freqSamples.Sum() / 2); ;
+                short sample = (short)(short.MaxValue * freqSamples.Sum() / 2);
                 writer.Write(sample);
             }
 
             writer.Flush();
             stream.Position = 0;
             return stream;
-        }
+        }*/
     }
 }

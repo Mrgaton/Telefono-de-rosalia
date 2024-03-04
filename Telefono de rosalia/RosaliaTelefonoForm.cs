@@ -22,6 +22,8 @@ namespace Telefono_de_rosalia
 
             this.ShowInTaskbar = false;
 
+            Console.WriteLine(SystemColors.Control);
+
             InvisibleButton.FlatStyle = FlatStyle.Flat;
             InvisibleButton.BackColor = Color.Transparent;
             InvisibleButton.FlatAppearance.MouseDownBackColor = Color.Transparent;
@@ -52,11 +54,7 @@ namespace Telefono_de_rosalia
         {
             Console.WriteLine("Button clicked " + ((Button)sender).Name.ToString());
 
-            if (callAnswered)
-            {
-                Task.Run(() => Beep(1209, 200));
-                Task.Run(() => Beep(697, 200));
-            }
+            Shake(5, 1, 2);
         }
 
         private bool callAnswered = false;
@@ -66,35 +64,42 @@ namespace Telefono_de_rosalia
             this.Refresh();
 
             ConfigForm(new List<Button>() {
-                this.InvisibleButton,
-                this.Number_Asterisk_Button,
-                this.Number_9_Button,
-                this.Number_7_Button,
-                this.Number_5_Button,
-                this.Number_2_Button,
                 this.Number_1_Button,
+                this.Number_2_Button,
+                this.Number_3_Button,
+                this.Number_4_Button,
+                this.Number_5_Button,
+                this.Number_6_Button,
+                this.Number_7_Button,
+                this.Number_8_Button,
+                this.Number_9_Button,
+                this.Number_0_Button,
+                this.Number_Asterisk_Button,
                 this.NullButton,
                 this.Number_Hashtag_Button,
-                this.Number_8_Button,
-                this.Number_4_Button,
-                this.Number_0_Button,
-                this.Number_6_Button,
-                this.Number_3_Button
+                this.InvisibleButton,
             });
 
             this.Opacity = 1;
 
             player.LoadCompleted += (object snd, AsyncCompletedEventArgs a) => Invoke(new MethodInvoker(async () =>
             {
+                Task.Factory.StartNew(() =>
+                {
+                    player.PlaySync();
+
+                    Environment.Exit(0);
+                });
+
                 await Task.Delay(800);
 
                 await Shake(800, 10, 15);
 
-                await Task.Delay(400);
+                await Task.Delay(500);
 
-                await Shake(800, 11, 14);
+                await Shake(1250, 12, 14);
 
-                await Task.Delay(800);
+                await Task.Delay(850);
 
                 TelefonoPictureBox.Image = Properties.Resources.NokiarosalicoOcupado;
 
@@ -106,17 +111,13 @@ namespace Telefono_de_rosalia
                 callAnswered = true;
             }));
 
-            Task tsk = Task.Factory.StartNew(() =>
-            {
-                player.Load();
+            player.Load();
 
-                player.PlaySync();
-
-                Environment.Exit(0);
-            });
+            this.Focus();
         }
 
         private static Random rnd = new Random();
+
         private static Point originalPoint = new Point();
 
         private async Task Shake(int Time, int ShakeMult, int TimeBetwemShake)
@@ -139,10 +140,7 @@ namespace Telefono_de_rosalia
             {
                 Console.WriteLine(FormButton.Name);
 
-                if (FormButton.Name.StartsWith("Number_"))
-                {
-                    FormButton.Click += NumbersButton_Click;
-                }
+                if (FormButton.Name.StartsWith("Number_")) FormButton.Click += NumbersButton_Click;
 
                 FormButton.MouseDown += TelefonoPictureBox_MouseDown;
                 FormButton.MouseUp += TelefonoPictureBox_MouseUp;
@@ -185,24 +183,55 @@ namespace Telefono_de_rosalia
             }
         }
 
-        private void RosaliaDancePictureBox_MouseDown(object sender, MouseEventArgs e)
+        private void RosaliaDancePictureBox_MouseDown(object sender, MouseEventArgs e) => TelefonoPictureBox_MouseDown(sender, e);
+
+        private void RosaliaDancePictureBox_MouseUp(object sender, MouseEventArgs e) => TelefonoPictureBox_MouseUp(sender, e);
+
+        private void RosaliaDancePictureBox_MouseMove(object sender, MouseEventArgs e) => TelefonoPictureBox_MouseMove(sender, e);
+
+        private void RosaliaTelefonoForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = true;
+
+        private static double[] horizontalFreq = { 697, 770, 852, 941 };
+
+        private static double[] verticalFreq = { 1209, 1336, 1477, 1632 };
+
+        private void PlayFrequency(int num)
         {
-            TelefonoPictureBox_MouseDown(sender, e);
+            if (!callAnswered) return;
+
+            int x = (num - 1) % 3;
+            int y = (num - 1) / 3;
+
+            PlayFrequency(x, y);
         }
 
-        private void RosaliaDancePictureBox_MouseUp(object sender, MouseEventArgs e)
+        private static void PlayFrequency(int x, int y)
         {
-            TelefonoPictureBox_MouseUp(sender, e);
+            Task.Factory.StartNew(() => Beep(Math.Abs((int)((horizontalFreq[x] + verticalFreq[y]) / 1.5)), 250));
         }
 
-        private void RosaliaDancePictureBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            TelefonoPictureBox_MouseMove(sender, e);
-        }
+        private void Number_1_Button_Click(object sender, EventArgs e) => PlayFrequency(1);
 
-        private void RosaliaTelefonoForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-        }
+        private void Number_2_Button_Click(object sender, EventArgs e) => PlayFrequency(2);
+
+        private void Number_3_Button_Click(object sender, EventArgs e) => PlayFrequency(3);
+
+        private void Number_4_Button_Click(object sender, EventArgs e) => PlayFrequency(4);
+
+        private void Number_5_Button_Click(object sender, EventArgs e) => PlayFrequency(5);
+
+        private void Number_6_Button_Click(object sender, EventArgs e) => PlayFrequency(6);
+
+        private void Number_7_Button_Click(object sender, EventArgs e) => PlayFrequency(7);
+
+        private void Number_8_Button_Click(object sender, EventArgs e) => PlayFrequency(8);
+
+        private void Number_9_Button_Click(object sender, EventArgs e) => PlayFrequency(9);
+
+        private void Number_Asterisk_Button_Click(object sender, EventArgs e) => PlayFrequency(10);
+
+        private void Number_0_Button_Click(object sender, EventArgs e) => PlayFrequency(11);
+
+        private void Number_Hashtag_Button_Click(object sender, EventArgs e) => PlayFrequency(12);
     }
 }

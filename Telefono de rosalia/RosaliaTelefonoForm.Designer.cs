@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Telefono_de_rosalia
 {
@@ -68,9 +69,10 @@ namespace Telefono_de_rosalia
             this.NullButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.NullButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NullButton.ForeColor = System.Drawing.Color.Transparent;
-            this.NullButton.Location = new System.Drawing.Point(90, 380);
+            this.NullButton.Location = new System.Drawing.Point(54, 310);
+            this.NullButton.Margin = new System.Windows.Forms.Padding(2);
             this.NullButton.Name = "NullButton";
-            this.NullButton.Size = new System.Drawing.Size(49, 54);
+            this.NullButton.Size = new System.Drawing.Size(51, 44);
             this.NullButton.TabIndex = 1;
             this.NullButton.UseVisualStyleBackColor = false;
             this.NullButton.Click += new System.EventHandler(this.NullButton_Click);
@@ -80,9 +82,10 @@ namespace Telefono_de_rosalia
             this.InvisibleButton.BackColor = System.Drawing.Color.Transparent;
             this.InvisibleButton.FlatAppearance.BorderSize = 0;
             this.InvisibleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InvisibleButton.Location = new System.Drawing.Point(331, 38);
+            this.InvisibleButton.Location = new System.Drawing.Point(248, 31);
+            this.InvisibleButton.Margin = new System.Windows.Forms.Padding(2);
             this.InvisibleButton.Name = "InvisibleButton";
-            this.InvisibleButton.Size = new System.Drawing.Size(28, 28);
+            this.InvisibleButton.Size = new System.Drawing.Size(21, 23);
             this.InvisibleButton.TabIndex = 0;
             this.InvisibleButton.UseVisualStyleBackColor = false;
             // 
@@ -94,18 +97,21 @@ namespace Telefono_de_rosalia
             this.Number_1_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_1_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_1_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_1_Button.Location = new System.Drawing.Point(81, 458);
+            this.Number_1_Button.Location = new System.Drawing.Point(50, 372);
+            this.Number_1_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_1_Button.Name = "Number_1_Button";
-            this.Number_1_Button.Size = new System.Drawing.Size(49, 39);
+            this.Number_1_Button.Size = new System.Drawing.Size(48, 30);
             this.Number_1_Button.TabIndex = 5;
             this.Number_1_Button.UseVisualStyleBackColor = false;
+            this.Number_1_Button.Click += new System.EventHandler(this.Number_1_Button_Click);
             // 
             // RosaliaDancePictureBox
             // 
             this.RosaliaDancePictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.RosaliaDancePictureBox.Location = new System.Drawing.Point(81, 183);
+            this.RosaliaDancePictureBox.Location = new System.Drawing.Point(50, 149);
+            this.RosaliaDancePictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.RosaliaDancePictureBox.Name = "RosaliaDancePictureBox";
-            this.RosaliaDancePictureBox.Size = new System.Drawing.Size(216, 158);
+            this.RosaliaDancePictureBox.Size = new System.Drawing.Size(173, 128);
             this.RosaliaDancePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.RosaliaDancePictureBox.TabIndex = 2;
             this.RosaliaDancePictureBox.TabStop = false;
@@ -120,8 +126,9 @@ namespace Telefono_de_rosalia
             this.TelefonoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TelefonoPictureBox.Image = global::Telefono_de_rosalia.Properties.Resources.Nokiarosalico;
             this.TelefonoPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.TelefonoPictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.TelefonoPictureBox.Name = "TelefonoPictureBox";
-            this.TelefonoPictureBox.Size = new System.Drawing.Size(371, 704);
+            this.TelefonoPictureBox.Size = new System.Drawing.Size(278, 572);
             this.TelefonoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.TelefonoPictureBox.TabIndex = 0;
             this.TelefonoPictureBox.TabStop = false;
@@ -138,11 +145,13 @@ namespace Telefono_de_rosalia
             this.Number_2_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_2_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_2_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_2_Button.Location = new System.Drawing.Point(160, 469);
+            this.Number_2_Button.Location = new System.Drawing.Point(113, 381);
+            this.Number_2_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_2_Button.Name = "Number_2_Button";
-            this.Number_2_Button.Size = new System.Drawing.Size(58, 37);
+            this.Number_2_Button.Size = new System.Drawing.Size(52, 30);
             this.Number_2_Button.TabIndex = 6;
             this.Number_2_Button.UseVisualStyleBackColor = false;
+            this.Number_2_Button.Click += new System.EventHandler(this.Number_2_Button_Click);
             // 
             // Number_3_Button
             // 
@@ -152,11 +161,13 @@ namespace Telefono_de_rosalia
             this.Number_3_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_3_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_3_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_3_Button.Location = new System.Drawing.Point(248, 458);
+            this.Number_3_Button.Location = new System.Drawing.Point(181, 372);
+            this.Number_3_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_3_Button.Name = "Number_3_Button";
-            this.Number_3_Button.Size = new System.Drawing.Size(58, 37);
+            this.Number_3_Button.Size = new System.Drawing.Size(60, 32);
             this.Number_3_Button.TabIndex = 7;
             this.Number_3_Button.UseVisualStyleBackColor = false;
+            this.Number_3_Button.Click += new System.EventHandler(this.Number_3_Button_Click);
             // 
             // Number_4_Button
             // 
@@ -166,11 +177,13 @@ namespace Telefono_de_rosalia
             this.Number_4_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_4_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_4_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_4_Button.Location = new System.Drawing.Point(81, 504);
+            this.Number_4_Button.Location = new System.Drawing.Point(50, 410);
+            this.Number_4_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_4_Button.Name = "Number_4_Button";
-            this.Number_4_Button.Size = new System.Drawing.Size(58, 37);
+            this.Number_4_Button.Size = new System.Drawing.Size(55, 38);
             this.Number_4_Button.TabIndex = 8;
             this.Number_4_Button.UseVisualStyleBackColor = false;
+            this.Number_4_Button.Click += new System.EventHandler(this.Number_4_Button_Click);
             // 
             // Number_5_Button
             // 
@@ -181,11 +194,13 @@ namespace Telefono_de_rosalia
             this.Number_5_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_5_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_5_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_5_Button.Location = new System.Drawing.Point(161, 514);
+            this.Number_5_Button.Location = new System.Drawing.Point(113, 415);
+            this.Number_5_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_5_Button.Name = "Number_5_Button";
-            this.Number_5_Button.Size = new System.Drawing.Size(58, 37);
+            this.Number_5_Button.Size = new System.Drawing.Size(56, 39);
             this.Number_5_Button.TabIndex = 9;
             this.Number_5_Button.UseVisualStyleBackColor = false;
+            this.Number_5_Button.Click += new System.EventHandler(this.Number_5_Button_Click);
             // 
             // Number_6_Button
             // 
@@ -195,11 +210,13 @@ namespace Telefono_de_rosalia
             this.Number_6_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_6_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_6_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_6_Button.Location = new System.Drawing.Point(248, 504);
+            this.Number_6_Button.Location = new System.Drawing.Point(181, 414);
+            this.Number_6_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_6_Button.Name = "Number_6_Button";
-            this.Number_6_Button.Size = new System.Drawing.Size(58, 37);
+            this.Number_6_Button.Size = new System.Drawing.Size(51, 30);
             this.Number_6_Button.TabIndex = 10;
             this.Number_6_Button.UseVisualStyleBackColor = false;
+            this.Number_6_Button.Click += new System.EventHandler(this.Number_6_Button_Click);
             // 
             // Number_7_Button
             // 
@@ -209,11 +226,13 @@ namespace Telefono_de_rosalia
             this.Number_7_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_7_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_7_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_7_Button.Location = new System.Drawing.Point(81, 556);
+            this.Number_7_Button.Location = new System.Drawing.Point(54, 452);
+            this.Number_7_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_7_Button.Name = "Number_7_Button";
-            this.Number_7_Button.Size = new System.Drawing.Size(58, 37);
+            this.Number_7_Button.Size = new System.Drawing.Size(51, 30);
             this.Number_7_Button.TabIndex = 11;
             this.Number_7_Button.UseVisualStyleBackColor = false;
+            this.Number_7_Button.Click += new System.EventHandler(this.Number_7_Button_Click);
             // 
             // Number_8_Button
             // 
@@ -223,11 +242,13 @@ namespace Telefono_de_rosalia
             this.Number_8_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_8_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_8_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_8_Button.Location = new System.Drawing.Point(161, 567);
+            this.Number_8_Button.Location = new System.Drawing.Point(121, 461);
+            this.Number_8_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_8_Button.Name = "Number_8_Button";
-            this.Number_8_Button.Size = new System.Drawing.Size(58, 37);
+            this.Number_8_Button.Size = new System.Drawing.Size(44, 30);
             this.Number_8_Button.TabIndex = 12;
             this.Number_8_Button.UseVisualStyleBackColor = false;
+            this.Number_8_Button.Click += new System.EventHandler(this.Number_8_Button_Click);
             // 
             // Number_9_Button
             // 
@@ -237,11 +258,13 @@ namespace Telefono_de_rosalia
             this.Number_9_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_9_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_9_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_9_Button.Location = new System.Drawing.Point(239, 547);
+            this.Number_9_Button.Location = new System.Drawing.Point(182, 447);
+            this.Number_9_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_9_Button.Name = "Number_9_Button";
-            this.Number_9_Button.Size = new System.Drawing.Size(58, 46);
+            this.Number_9_Button.Size = new System.Drawing.Size(44, 37);
             this.Number_9_Button.TabIndex = 13;
             this.Number_9_Button.UseVisualStyleBackColor = false;
+            this.Number_9_Button.Click += new System.EventHandler(this.Number_9_Button_Click);
             // 
             // Number_0_Button
             // 
@@ -251,11 +274,13 @@ namespace Telefono_de_rosalia
             this.Number_0_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_0_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_0_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_0_Button.Location = new System.Drawing.Point(161, 610);
+            this.Number_0_Button.Location = new System.Drawing.Point(113, 496);
+            this.Number_0_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_0_Button.Name = "Number_0_Button";
-            this.Number_0_Button.Size = new System.Drawing.Size(58, 37);
+            this.Number_0_Button.Size = new System.Drawing.Size(52, 37);
             this.Number_0_Button.TabIndex = 14;
             this.Number_0_Button.UseVisualStyleBackColor = false;
+            this.Number_0_Button.Click += new System.EventHandler(this.Number_0_Button_Click);
             // 
             // Number_Asterisk_Button
             // 
@@ -265,11 +290,13 @@ namespace Telefono_de_rosalia
             this.Number_Asterisk_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_Asterisk_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_Asterisk_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_Asterisk_Button.Location = new System.Drawing.Point(81, 599);
+            this.Number_Asterisk_Button.Location = new System.Drawing.Point(61, 489);
+            this.Number_Asterisk_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_Asterisk_Button.Name = "Number_Asterisk_Button";
-            this.Number_Asterisk_Button.Size = new System.Drawing.Size(66, 39);
+            this.Number_Asterisk_Button.Size = new System.Drawing.Size(44, 35);
             this.Number_Asterisk_Button.TabIndex = 15;
             this.Number_Asterisk_Button.UseVisualStyleBackColor = false;
+            this.Number_Asterisk_Button.Click += new System.EventHandler(this.Number_Asterisk_Button_Click);
             // 
             // Number_Hashtag_Button
             // 
@@ -279,18 +306,20 @@ namespace Telefono_de_rosalia
             this.Number_Hashtag_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Number_Hashtag_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Number_Hashtag_Button.ForeColor = System.Drawing.Color.Transparent;
-            this.Number_Hashtag_Button.Location = new System.Drawing.Point(239, 599);
+            this.Number_Hashtag_Button.Location = new System.Drawing.Point(176, 490);
+            this.Number_Hashtag_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Number_Hashtag_Button.Name = "Number_Hashtag_Button";
-            this.Number_Hashtag_Button.Size = new System.Drawing.Size(58, 46);
+            this.Number_Hashtag_Button.Size = new System.Drawing.Size(51, 37);
             this.Number_Hashtag_Button.TabIndex = 16;
             this.Number_Hashtag_Button.UseVisualStyleBackColor = false;
+            this.Number_Hashtag_Button.Click += new System.EventHandler(this.Number_Hashtag_Button_Click);
             // 
             // RosaliaTelefonoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(371, 704);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(278, 572);
             this.ControlBox = false;
             this.Controls.Add(this.Number_Hashtag_Button);
             this.Controls.Add(this.Number_Asterisk_Button);
@@ -310,13 +339,14 @@ namespace Telefono_de_rosalia
             this.Controls.Add(this.InvisibleButton);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RosaliaTelefonoForm";
             this.ShowInTaskbar = false;
             this.Text = "Telefono de rosalia";
             this.TopMost = true;
-            this.TransparencyKey = System.Drawing.SystemColors.Control;
+            this.TransparencyKey = System.Drawing.Color.White;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RosaliaTelefonoForm_FormClosing);
             this.Load += new System.EventHandler(this.RosaliaTelefonoForm_Load);
             this.Shown += new System.EventHandler(this.RosaliaTelefonoForm_Shown);
