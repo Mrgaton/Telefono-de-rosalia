@@ -22,10 +22,10 @@ namespace Telefono_de_rosalia
                 SL_GEN_STATE_LAST = 3
             }
 
-            [DllImportAttribute("Slwga.dll", EntryPoint = "SLIsGenuineLocal", CharSet = CharSet.None, ExactSpelling = false, SetLastError = false, PreserveSig = true, CallingConvention = CallingConvention.Winapi, BestFitMapping = false, ThrowOnUnmappableChar = false)]
-            [PreserveSigAttribute()]
-            private static extern uint SLIsGenuineLocal(ref SLID slid, [In, Out] ref SL_GENUINE_STATE genuineState, IntPtr val3);
+            [DllImport("Slwga.dll", EntryPoint = "SLIsGenuineLocal", CharSet = CharSet.None, ExactSpelling = false, SetLastError = false, PreserveSig = true, CallingConvention = CallingConvention.Winapi, BestFitMapping = false, ThrowOnUnmappableChar = false)]
 
+            [PreserveSig()]
+            static extern uint SLIsGenuineLocal(ref SLID slid, [In, Out] ref SL_GENUINE_STATE genuineState, IntPtr val3);
             public static void CheckWindows()
             {
                 if (!IsGenuineWindows())
@@ -67,8 +67,12 @@ namespace Telefono_de_rosalia
         [DllImport("user32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
         private static extern bool SetProcessDPIAware();
 
+        [DllImport("winmm.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)] public static extern uint waveOutGetNumDevs();
+
+        [DllImport("user32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)] private static extern bool SetProcessDPIAware();
+
         [STAThread]
-        private static void Main()
+        static void Main()
         {
             GenuineWindowsDetector.CheckWindows();
 
@@ -89,9 +93,7 @@ namespace Telefono_de_rosalia
                     {
                         using (var player = new SoundPlayer(tone))
                         {
-                            player.Play();
-
-                            Thread.Sleep(800);
+                            player.PlaySync();
                         }
                     }
                 }
