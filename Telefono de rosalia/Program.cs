@@ -62,7 +62,7 @@ namespace Telefono_de_rosalia
         [STAThread]
         private static void Main()
         {
-            GenuineWindowsDetector.CheckWindows();
+            //GenuineWindowsDetector.CheckWindows();
 
             if (typeof(Program).Name != "Program")
             {
